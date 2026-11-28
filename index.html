@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEREIN | The Night Reset Kit</title>
+  <title>SEREIN | The Night Reset Kit — Calm Evening Care</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --warm-beige: #F5EFE6;
       --cream-card: #FAF7F2;
       --blue-black: #16202A;
-      --blue-black-soft: #243240;
+      --blue-black-soft: #223140;
       --soft-lavender: #DDD3EB;
       --lavender-tint: #EFEAF6;
       --muted-text: #525D68;
@@ -33,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, .brand-logo {
+    h1, h2, h3, h4, .brand-logo, .serif-display {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -44,19 +44,34 @@
       display: block;
     }
 
-    /* Announcement Bar */
-    .announcement-bar {
+    /* Top Promo Ticker */
+    .promo-bar {
       background-color: var(--blue-black);
       color: var(--warm-beige);
-      text-align: center;
-      padding: 0.55rem 1rem;
+      padding: 0.6rem 1rem;
       font-size: 0.8rem;
       letter-spacing: 0.06em;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(221, 211, 235, 0.18);
     }
 
-    .announcement-bar span {
+    .promo-track {
+      display: inline-block;
+      animation: marquee 24s linear infinite;
+    }
+
+    .promo-track span {
+      margin: 0 2rem;
+    }
+
+    .promo-track strong {
       color: var(--soft-lavender);
-      font-weight: 600;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* Navigation */
@@ -65,12 +80,12 @@
       top: 0;
       z-index: 100;
       background-color: rgba(245, 239, 230, 0.94);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-soft);
     }
 
     .nav-container {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0.95rem 1.5rem;
       display: flex;
@@ -80,16 +95,17 @@
     }
 
     .brand-logo {
-      font-size: 1.7rem;
-      letter-spacing: 0.22em;
+      font-size: 1.8rem;
+      letter-spacing: 0.24em;
       color: var(--blue-black);
       text-decoration: none;
+      font-weight: 700;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.6rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
 
@@ -98,24 +114,35 @@
       color: var(--blue-black);
       font-size: 0.88rem;
       font-weight: 500;
-      transition: opacity 0.2s ease;
+      position: relative;
     }
 
-    nav a:hover {
-      opacity: 0.65;
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1.5px;
+      background-color: var(--blue-black);
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .btn-primary {
       display: inline-block;
       background-color: var(--blue-black);
       color: var(--warm-beige);
-      padding: 0.85rem 1.8rem;
+      padding: 0.85rem 1.85rem;
       border-radius: 999px;
       text-decoration: none;
       font-size: 0.88rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.04em;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
       border: none;
       cursor: pointer;
     }
@@ -123,60 +150,102 @@
     .btn-primary:hover {
       background-color: var(--blue-black-soft);
       transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(22, 32, 42, 0.16);
     }
 
     .btn-secondary {
       display: inline-block;
       background-color: var(--soft-lavender);
       color: var(--blue-black);
-      padding: 0.85rem 1.8rem;
+      padding: 0.85rem 1.85rem;
       border-radius: 999px;
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 600;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.22s ease, opacity 0.22s ease;
     }
 
     .btn-secondary:hover {
-      opacity: 0.9;
+      opacity: 0.92;
       transform: translateY(-2px);
     }
 
     /* Hero */
     .hero {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 4rem 1.5rem 4.5rem;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.06fr 0.94fr;
       gap: 3.5rem;
       align-items: center;
     }
 
-    .badge {
-      display: inline-block;
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background-color: var(--soft-lavender);
       color: var(--blue-black);
-      padding: 0.38rem 1rem;
+      padding: 0.42rem 1.05rem;
       border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.76rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 4.4vw, 3.75rem);
-      line-height: 1.12;
-      margin-bottom: 1.15rem;
+      font-size: clamp(2.65rem, 4.6vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 500;
     }
 
     .hero p {
       font-size: 1.02rem;
       color: var(--muted-text);
+      margin-bottom: 1.8rem;
+      max-width: 520px;
+    }
+
+    .hero-promo-banner {
+      background: linear-gradient(120deg, var(--lavender-tint), var(--cream-card));
+      border: 1px solid rgba(22, 32, 42, 0.14);
+      border-left: 4px solid var(--blue-black);
+      border-radius: 16px;
+      padding: 0.95rem 1.2rem;
       margin-bottom: 1.85rem;
-      max-width: 510px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-promo-banner strong {
+      font-size: 0.92rem;
+      display: block;
+    }
+
+    .hero-promo-banner span {
+      font-size: 0.82rem;
+      color: var(--muted-text);
+    }
+
+    .price-pill {
+      background-color: var(--blue-black);
+      color: var(--soft-lavender);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.25rem 0.95rem;
+      border-radius: 999px;
     }
 
     .hero-actions {
@@ -187,66 +256,91 @@
       margin-bottom: 2rem;
     }
 
-    .hero-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      padding-top: 1.25rem;
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1.35rem;
       border-top: 1px solid var(--border-soft);
-      font-size: 0.85rem;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .stat-item span {
+      font-size: 0.8rem;
       color: var(--muted-text);
     }
 
-    .hero-highlights strong {
-      color: var(--blue-black);
-      display: block;
-      font-size: 0.95rem;
-    }
-
-    .hero-image-wrap {
+    .hero-visual {
+      position: relative;
       background-color: var(--cream-card);
-      padding: 1.2rem;
-      border-radius: 28px;
+      padding: 1.25rem;
+      border-radius: 30px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 20px 45px rgba(22, 32, 42, 0.06);
+      box-shadow: 0 24px 50px rgba(22, 32, 42, 0.08);
     }
 
-    .hero-image-wrap img {
+    .hero-visual img {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 22px;
+    }
+
+    .floating-chip {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background-color: rgba(22, 32, 42, 0.9);
+      backdrop-filter: blur(8px);
+      color: var(--warm-beige);
+      padding: 0.75rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(221, 211, 235, 0.28);
+      font-size: 0.8rem;
+    }
+
+    .floating-chip strong {
+      color: var(--soft-lavender);
+      display: block;
+      font-size: 0.9rem;
     }
 
     /* Sections */
     section {
-      padding: 4.75rem 1.5rem;
+      padding: 5rem 1.5rem;
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
     }
 
     .section-header {
       text-align: center;
-      max-width: 660px;
+      max-width: 680px;
       margin: 0 auto 3.25rem;
     }
 
-    .section-header span {
+    .section-header .eyebrow {
       display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted-text);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
     }
 
     .section-header h2 {
-      font-size: clamp(2rem, 3.4vw, 2.8rem);
-      margin-bottom: 0.7rem;
+      font-size: clamp(2.1rem, 3.6vw, 2.95rem);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
     }
 
     .section-header p {
@@ -254,54 +348,131 @@
       font-size: 0.96rem;
     }
 
-    /* Product Objectives Section */
-    .objectives-section {
-      background-color: var(--cream-card);
-      border-top: 1px solid var(--border-soft);
-      border-bottom: 1px solid var(--border-soft);
+    /* Promotional Campaign Spotlight */
+    .promo-spotlight {
+      background-color: var(--blue-black);
+      color: var(--warm-beige);
+      border-top: 1px solid rgba(221, 211, 235, 0.15);
+      border-bottom: 1px solid rgba(221, 211, 235, 0.15);
     }
 
-    .objectives-grid {
+    .promo-spotlight .eyebrow {
+      color: var(--soft-lavender);
+    }
+
+    .promo-spotlight .section-header p {
+      color: rgba(245, 239, 230, 0.78);
+    }
+
+    .promo-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
     }
 
-    .objective-card {
-      background-color: var(--warm-beige);
-      border: 1px solid var(--border-soft);
-      border-radius: 22px;
-      padding: 1.85rem;
+    .promo-card {
+      background: linear-gradient(160deg, rgba(221, 211, 235, 0.12), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(221, 211, 235, 0.24);
+      border-radius: 24px;
+      padding: 2rem 1.75rem;
       display: flex;
-      gap: 1.15rem;
-      align-items: flex-start;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .obj-num {
-      min-width: 42px;
-      height: 42px;
-      border-radius: 14px;
+    .promo-card.featured-promo {
+      border-color: var(--soft-lavender);
+      background: linear-gradient(160deg, rgba(221, 211, 235, 0.22), rgba(221, 211, 235, 0.05));
+    }
+
+    .promo-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--soft-lavender);
+    }
+
+    .promo-badge {
+      align-self: flex-start;
       background-color: var(--soft-lavender);
       color: var(--blue-black);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.1rem;
     }
 
-    .objective-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.35rem;
+    .promo-card h3 {
+      font-size: 1.65rem;
+      color: var(--warm-beige);
+      margin-bottom: 0.5rem;
     }
 
-    .objective-card p {
+    .promo-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      color: var(--soft-lavender);
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .promo-price small {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(245, 239, 230, 0.72);
+    }
+
+    .promo-card p {
       font-size: 0.9rem;
-      color: var(--muted-text);
+      color: rgba(245, 239, 230, 0.82);
+      margin-bottom: 1.5rem;
     }
 
-    /* 3-Step Products */
+    .promo-link {
+      color: var(--soft-lavender);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .promo-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Interactive Step Tabs + Products Showcase */
+    .step-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      background-color: var(--cream-card);
+      color: var(--blue-black);
+      border: 1px solid var(--border-soft);
+      padding: 0.65rem 1.35rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background-color: var(--blue-black);
+      color: var(--warm-beige);
+      border-color: var(--blue-black);
+    }
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -311,16 +482,21 @@
     .product-card {
       background-color: var(--cream-card);
       border: 1px solid var(--border-soft);
-      border-radius: 24px;
+      border-radius: 26px;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
       display: flex;
       flex-direction: column;
     }
 
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 36px rgba(22, 32, 42, 0.07);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(22, 32, 42, 0.08);
+    }
+
+    .product-card.highlight-card {
+      border-color: var(--blue-black);
+      box-shadow: 0 18px 38px rgba(22, 32, 42, 0.12);
     }
 
     .product-img-box {
@@ -335,11 +511,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.45s ease;
     }
 
     .product-card:hover .product-img-box img {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     .step-pill {
@@ -349,7 +525,7 @@
       background-color: var(--blue-black);
       color: var(--warm-beige);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
       padding: 0.35rem 0.85rem;
@@ -357,14 +533,14 @@
     }
 
     .product-body {
-      padding: 1.65rem;
+      padding: 1.75rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
     .product-body h3 {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       margin-bottom: 0.35rem;
     }
 
@@ -382,9 +558,19 @@
     .product-body p {
       font-size: 0.9rem;
       color: var(--muted-text);
+      margin-bottom: 1.15rem;
     }
 
-    /* Gift Box Showcase */
+    .product-meta {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border-soft);
+      font-size: 0.8rem;
+      color: var(--blue-black);
+      font-weight: 600;
+    }
+
+    /* Gift Box Showcase (Including Wooden Spoon) */
     .box-showcase {
       background-color: var(--lavender-tint);
       border-top: 1px solid var(--border-soft);
@@ -393,17 +579,17 @@
 
     .box-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.05fr;
       gap: 3.5rem;
       align-items: center;
     }
 
     .box-photo-frame {
       background-color: var(--cream-card);
-      padding: 1.2rem;
+      padding: 1.25rem;
       border-radius: 28px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 20px 40px rgba(22, 32, 42, 0.06);
+      box-shadow: 0 20px 42px rgba(22, 32, 42, 0.07);
     }
 
     .box-photo-frame img {
@@ -414,31 +600,31 @@
     }
 
     .box-details h2 {
-      font-size: clamp(2rem, 3.4vw, 2.7rem);
-      margin-bottom: 0.9rem;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 0.85rem;
     }
 
     .box-details > p {
       color: var(--muted-text);
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.5rem;
     }
 
     .checklist {
       list-style: none;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 0.9rem;
       margin-bottom: 1.85rem;
     }
 
     .checklist li {
       background-color: var(--cream-card);
-      padding: 0.95rem 1.2rem;
-      border-radius: 16px;
+      padding: 0.95rem 1.05rem;
+      border-radius: 18px;
       border: 1px solid var(--border-soft);
       display: flex;
       align-items: flex-start;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .check-dot {
@@ -451,19 +637,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       margin-top: 2px;
     }
 
     .checklist strong {
       display: block;
-      font-size: 0.93rem;
+      font-size: 0.88rem;
     }
 
     .checklist span {
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       color: var(--muted-text);
+      display: block;
+      margin-top: 0.15rem;
     }
 
     .price-box {
@@ -475,7 +663,7 @@
 
     .price-tag {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2.35rem;
       font-weight: 700;
     }
 
@@ -487,24 +675,65 @@
       display: block;
     }
 
-    /* Uniqueness & 4-7-8 Ritual */
-    .unique-grid {
+    /* Objectives + Why Unique + 4-7-8 Ritual */
+    .objectives-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-      margin-bottom: 3.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
 
-    .unique-card {
+    .objective-card {
       background-color: var(--cream-card);
       border: 1px solid var(--border-soft);
       border-radius: 22px;
-      padding: 1.85rem;
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.15rem;
+      align-items: flex-start;
+    }
+
+    .obj-num {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background-color: var(--soft-lavender);
+      color: var(--blue-black);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .objective-card h3 {
+      font-size: 1.38rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .objective-card p {
+      font-size: 0.9rem;
+      color: var(--muted-text);
+    }
+
+    .unique-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.65rem;
+      margin-bottom: 3.25rem;
+    }
+
+    .unique-card {
+      background-color: var(--lavender-tint);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+      padding: 1.8rem;
     }
 
     .unique-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.42rem;
+      margin-bottom: 0.45rem;
     }
 
     .unique-card p {
@@ -520,18 +749,18 @@
     }
 
     .ritual-box h3 {
-      font-size: 2rem;
+      font-size: 2.05rem;
       color: var(--warm-beige);
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
 
     .ritual-sub {
       text-align: center;
-      color: rgba(245, 239, 230, 0.75);
+      color: rgba(245, 239, 230, 0.78);
       font-size: 0.92rem;
       max-width: 560px;
-      margin: 0 auto 2.25rem;
+      margin: 0 auto 2.2rem;
     }
 
     .ritual-cards {
@@ -542,15 +771,15 @@
 
     .ritual-step {
       background-color: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(221, 211, 235, 0.22);
+      border: 1px solid rgba(221, 211, 235, 0.24);
       border-radius: 20px;
-      padding: 1.6rem;
+      padding: 1.65rem;
       text-align: center;
     }
 
     .ritual-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.75rem;
+      font-size: 2.85rem;
       font-weight: 700;
       color: var(--soft-lavender);
       line-height: 1;
@@ -559,16 +788,16 @@
 
     .ritual-step h4 {
       font-size: 1.05rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       color: var(--warm-beige);
     }
 
     .ritual-step p {
       font-size: 0.86rem;
-      color: rgba(245, 239, 230, 0.75);
+      color: rgba(245, 239, 230, 0.76);
     }
 
-    /* Team Section */
+    /* Meet The Team (4 Senior Roles) */
     .team-section {
       background-color: var(--cream-card);
       border-top: 1px solid var(--border-soft);
@@ -584,48 +813,58 @@
     .team-card {
       background-color: var(--warm-beige);
       border: 1px solid var(--border-soft);
-      border-radius: 20px;
-      padding: 1.6rem;
+      border-radius: 24px;
+      padding: 1.85rem 1.45rem;
       text-align: center;
+      transition: transform 0.25s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
     }
 
     .avatar-circle {
-      width: 58px;
-      height: 58px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background-color: var(--soft-lavender);
-      color: var(--blue-black);
+      background-color: var(--blue-black);
+      color: var(--soft-lavender);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-size: 1.65rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 0.9rem;
+      margin: 0 auto 1rem;
+      border: 3px solid var(--soft-lavender);
     }
 
     .team-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.2rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
     }
 
-    .role-tag {
+    .jawatan-badge {
       display: inline-block;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--muted-text);
-      margin-bottom: 0.55rem;
+      background-color: var(--soft-lavender);
+      color: var(--blue-black);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
     }
 
     .team-card p {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: var(--muted-text);
     }
 
-    /* FAQ & Order Layout */
+    /* FAQ + Interactive Pre-Order */
     .two-col-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.05fr;
       gap: 2.5rem;
       align-items: start;
     }
@@ -634,16 +873,28 @@
       background-color: var(--cream-card);
       border: 1px solid var(--border-soft);
       border-radius: 18px;
-      padding: 1.35rem 1.5rem;
       margin-bottom: 1rem;
+      overflow: hidden;
     }
 
-    .faq-item h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.35rem;
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 1.2rem 1.4rem;
+      text-align: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--blue-black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .faq-item p {
+    .faq-answer {
+      padding: 0 1.4rem 1.2rem;
       font-size: 0.88rem;
       color: var(--muted-text);
     }
@@ -652,12 +903,12 @@
       background-color: var(--cream-card);
       border: 1px solid var(--border-soft);
       border-radius: 26px;
-      padding: 2.25rem;
-      box-shadow: 0 18px 40px rgba(22, 32, 42, 0.05);
+      padding: 2.35rem;
+      box-shadow: 0 20px 45px rgba(22, 32, 42, 0.06);
     }
 
     .order-card h3 {
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       margin-bottom: 0.35rem;
     }
 
@@ -682,7 +933,7 @@
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 0.8rem 0.95rem;
+      padding: 0.82rem 0.95rem;
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       background-color: var(--warm-beige);
@@ -691,11 +942,29 @@
       color: var(--blue-black);
     }
 
+    .total-summary {
+      background-color: var(--lavender-tint);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .total-summary strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+    }
+
     /* Footer */
     footer {
       background-color: var(--blue-black);
       color: rgba(245, 239, 230, 0.78);
-      padding: 3rem 1.5rem;
+      padding: 3.25rem 1.5rem;
       text-align: center;
     }
 
@@ -715,19 +984,20 @@
       margin-top: 0.35rem;
     }
 
-    /* Responsive */
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .hero,
       .box-grid,
       .two-col-section {
         grid-template-columns: 1fr;
       }
 
+      .promo-grid,
       .products-grid,
       .objectives-grid,
       .unique-grid,
       .ritual-cards,
-      .team-grid {
+      .team-grid,
+      .checklist {
         grid-template-columns: 1fr;
       }
 
@@ -739,179 +1009,212 @@
 </head>
 <body>
 
-  <!-- Top Announcement -->
-  <div class="announcement-bar">
-    <span>SEREIN — THE NIGHT RESET KIT</span> • 3-Step Evening Ritual + 4-7-8 Breathing Card • <span>RM35 / Set</span>
+  <!-- Top Promo Ticker -->
+  <div class="promo-bar">
+    <div class="promo-track">
+      <span><strong>PROMO SPECIAL</strong> • Buy <strong>3 Sets for RM100</strong> (Normal RM35/set, Save RM5!)</span>
+      <span>Includes <strong>Wooden Spoon</strong> to Scoop Whipped Scrub + <strong>4-7-8 Ritual Card</strong></span>
+      <span>3-Step Evening Ritual: <strong>Scrub • Body Oil • Pillow Mist</strong></span>
+      <span><strong>PROMO SPECIAL</strong> • Buy <strong>3 Sets for RM100</strong> (Normal RM35/set, Save RM5!)</span>
+      <span>Includes <strong>Wooden Spoon</strong> to Scoop Whipped Scrub + <strong>4-7-8 Ritual Card</strong></span>
+      <span>3-Step Evening Ritual: <strong>Scrub • Body Oil • Pillow Mist</strong></span>
+    </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand-logo">SEREIN</a>
       <nav>
         <ul>
-          <li><a href="#objectives">Objectives</a></li>
+          <li><a href="#promotions">Promo</a></li>
           <li><a href="#products">Products</a></li>
-          <li><a href="#gift-box">The Box</a></li>
-          <li><a href="#why-serein">Why SEREIN</a></li>
-          <li><a href="#team">Team</a></li>
+          <li><a href="#gift-box">Inside The Box</a></li>
+          <li><a href="#objectives">Objectives</a></li>
+          <li><a href="#team">Leadership</a></li>
           <li><a href="#order">Pre-Order</a></li>
         </ul>
       </nav>
-      <a href="#order" class="btn-primary">Order Now</a>
+      <a href="#order" class="btn-primary">3 Sets RM100</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div>
-      <span class="badge">Calm Evening Body Care</span>
-      <h1>Unwind Gently. Reset Before Sleep.</h1>
+      <div class="pill-tag">Promo Price Drop • Buy 3 Sets = RM100</div>
+      <h1>Your Nightly Reset, <em>Softly</em> Crafted.</h1>
       <p>
-        SEREIN brings together a calm 3-step evening body care routine and mindful breathing
-        to help you transition smoothly from busy, humid days into restorative rest.
+        Turn tiring, humid evenings into a calm wind-down ritual with <strong>The Night Reset Kit</strong>—complete with whipped scrub, soothing body oil, pillow mist, wooden scoop spoon, and guided breathing.
       </p>
-      <div class="hero-actions">
-        <a href="#order" class="btn-primary">Pre-Order Kit — RM35</a>
-        <a href="#gift-box" class="btn-secondary">Explore The Box</a>
+
+      <div class="hero-promo-banner">
+        <div>
+          <strong>Buy 3 Sets Promo — Save RM5!</strong>
+          <span>1 Set = RM35 • 3 Sets = RM100 only</span>
+        </div>
+        <div class="price-pill">3 Sets RM100</div>
       </div>
-      <div class="hero-highlights">
-        <div><strong>3 Steps</strong>Scrub, Body Oil &amp; Mist</div>
-        <div><strong>Lightweight</strong>Non-greasy tropical feel</div>
-        <div><strong>Mindful</strong>4-7-8 Ritual Card included</div>
+
+      <div class="hero-actions">
+        <a href="#order" class="btn-primary">Grab 3 Sets — RM100</a>
+        <a href="#gift-box" class="btn-secondary">See Full Box Contents</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <strong>RM35</strong>
+          <span>1 Set normal price</span>
+        </div>
+        <div class="stat-item">
+          <strong>RM100</strong>
+          <span>Buy 3 Sets promo</span>
+        </div>
+        <div class="stat-item">
+          <strong>+ Spoon</strong>
+          <span>Wooden scoop included</span>
+        </div>
       </div>
     </div>
 
-    <div class="hero-image-wrap">
-      <!-- GAMBAR KOTAK HADIAH / SET LENGKAP -->
-      <img src="box.jpg" alt="SEREIN The Night Reset Kit Box" />
+    <div class="hero-visual">
+      <img src="box.jpg" alt="SEREIN The Night Reset Kit Box with Products and Wooden Spoon" />
+      <div class="floating-chip">
+        <strong>Buy 3 Sets = RM100</strong>
+        Includes Wooden Spoon &amp; Ritual Card
+      </div>
     </div>
   </section>
 
-  <!-- Product Objectives Section -->
-  <section id="objectives" class="objectives-section">
+  <!-- Product Promotion Price Drop -->
+  <section id="promotions" class="promo-spotlight">
     <div class="container">
       <div class="section-header">
-        <span>Purpose &amp; Direction</span>
-        <h2>Our Product Objectives</h2>
-        <p>Every detail of The Night Reset Kit is created with clear intentions for everyday comfort and calm.</p>
+        <span class="eyebrow">Lower Bundle Price</span>
+        <h2>Buy 3 Sets For RM100</h2>
+        <p>Normal price is RM35 per set—get 3 full sets for RM100 and save RM5.</p>
       </div>
 
-      <div class="objectives-grid">
-        <div class="objective-card">
-          <div class="obj-num">01</div>
+      <div class="promo-grid">
+        <div class="promo-card">
           <div>
-            <h3>Promote Post-Day Relaxation</h3>
+            <span class="promo-badge">Single Set</span>
+            <h3>1 Night Reset Set</h3>
+            <div class="promo-price">RM35 <small>/ 1 set</small></div>
             <p>
-              Provide a structured, soothing evening routine that signals to the body and mind that it is time to slow down after long study or work hours.
+              1 full box including Moonlight Whipped Sugar Scrub, wooden spoon, Slumber Soothing Body Oil (50ml), Dreamscape Pillow &amp; Pajama Mist, and 4-7-8 Ritual Card.
             </p>
           </div>
+          <a href="#order" class="promo-link" data-select-qty="1">Choose 1 Set (RM35) →</a>
         </div>
 
-        <div class="objective-card">
-          <div class="obj-num">02</div>
+        <div class="promo-card">
           <div>
-            <h3>Suit Warm &amp; Humid Weather</h3>
+            <span class="promo-badge">Two Sets</span>
+            <h3>2 Night Reset Sets</h3>
+            <div class="promo-price">RM70 <small>/ 2 sets</small></div>
             <p>
-              Formulate lightweight, fast-absorbing textures that soften and refresh skin without feeling heavy or sticky in tropical climates.
+              2 full boxes at RM35 each—great for sharing with a friend, roommate, or keeping a backup set ready.
             </p>
           </div>
+          <a href="#order" class="promo-link" data-select-qty="2">Choose 2 Sets (RM70) →</a>
         </div>
 
-        <div class="objective-card">
-          <div class="obj-num">03</div>
+        <div class="promo-card featured-promo">
           <div>
-            <h3>Encourage Mindful Breathing</h3>
+            <span class="promo-badge">Promo Price • Save RM5</span>
+            <h3>Buy 3 Sets Promo</h3>
+            <div class="promo-price">RM100 <small>/ 3 sets (instead of RM105)</small></div>
             <p>
-              Pair sensory aromatherapy with a simple 4-7-8 breathing guide so users can ease overthinking and settle into sleep more peacefully.
+              Special price drop when you take 3 sets together—only RM100 for 3 complete boxes with wooden spoons and ritual cards.
             </p>
           </div>
-        </div>
-
-        <div class="objective-card">
-          <div class="obj-num">04</div>
-          <div>
-            <h3>Deliver an Accessible Calm Experience</h3>
-            <p>
-              Offer a cohesive, aesthetic self-care set at RM35 that feels thoughtful and complete—whether kept for personal rest or gifted to someone dear.
-            </p>
-          </div>
+          <a href="#order" class="promo-link" data-select-qty="3">Claim 3 Sets for RM100 →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3-Step Products -->
+  <!-- 3-Step Products with Interactive Filter -->
   <section id="products">
     <div class="container">
       <div class="section-header">
-        <span>The Night Reset Kit</span>
-        <h2>Three Steps to Evening Calm</h2>
-        <p>Layered gently in sequence to exfoliate, nourish, and scent your sleep space.</p>
+        <span class="eyebrow">Step-By-Step Routine</span>
+        <h2>Inside The 3-Step Evening Ritual</h2>
+        <p>Tap a step below to highlight that part of the routine or view all three products together.</p>
+      </div>
+
+      <div class="step-tabs">
+        <button type="button" class="tab-btn active" data-step="all">All 3 Steps</button>
+        <button type="button" class="tab-btn" data-step="scrub">01 • Whipped Scrub</button>
+        <button type="button" class="tab-btn" data-step="oil">02 • Body Oil</button>
+        <button type="button" class="tab-btn" data-step="mist">03 • Pillow Mist</button>
       </div>
 
       <div class="products-grid">
         <!-- Scrub -->
-        <article class="product-card">
+        <article class="product-card" data-product="scrub">
           <div class="product-img-box">
-            <span class="step-pill">Step 01 • Scrub</span>
+            <span class="step-pill">Step 01 • Smooth</span>
             <img src="scrub.jpg" alt="SEREIN Moonlight Whipped Sugar Scrub" />
           </div>
           <div class="product-body">
             <h3>Moonlight Whipped Sugar Scrub</h3>
             <span class="scent-notes">Lavender &amp; Vanilla</span>
             <p>
-              Soft, whipped sugar texture that gently polishes dullness away and leaves skin smooth with a comforting sweet-floral aroma.
+              Light, whipped sugar scrub that gently exfoliates rough texture and leaves skin soft—best scooped cleanly with the included wooden spoon.
             </p>
+            <div class="product-meta">Best paired with: Wooden Spoon Scoop</div>
           </div>
         </article>
 
         <!-- Body Oil -->
-        <article class="product-card">
+        <article class="product-card" data-product="oil">
           <div class="product-img-box">
-            <span class="step-pill">Step 02 • Body Oil</span>
+            <span class="step-pill">Step 02 • Nourish</span>
             <img src="oil.jpg" alt="SEREIN Slumber Soothing Body Oil" />
           </div>
           <div class="product-body">
             <h3>Slumber Soothing Body Oil</h3>
             <span class="scent-notes">Chamomile &amp; Cedarwood</span>
             <p>
-              A 50ml botanical oil that locks in hydration after cleansing while grounding the senses with warm, tranquil notes.
+              A 50ml botanical body oil designed to lock in moisture after showering while grounding your senses with calm, warm notes.
             </p>
+            <div class="product-meta">Format: 50ml Glass Dropper</div>
           </div>
         </article>
 
         <!-- Mist -->
-        <article class="product-card">
+        <article class="product-card" data-product="mist">
           <div class="product-img-box">
-            <span class="step-pill">Step 03 • Mist</span>
+            <span class="step-pill">Step 03 • Scent</span>
             <img src="mist.jpg" alt="SEREIN Dreamscape Pillow and Pajama Mist" />
           </div>
           <div class="product-body">
             <h3>Dreamscape Pillow &amp; Pajama Mist</h3>
             <span class="scent-notes">Bergamot &amp; White Tea</span>
             <p>
-              Fine-mist spray for pillows, sheets, and pajamas to refresh your surroundings before you turn off the lights.
+              A gentle fine mist for pillows, bedding, and pajamas that refreshes your night space before sleep.
             </p>
+            <div class="product-meta">Use: Lightly mist linens &amp; sleepwear</div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- What Customer Gets (Box Showcase) -->
+  <!-- What Customer Receives (Box + Wooden Spoon) -->
   <section id="gift-box" class="box-showcase">
     <div class="container box-grid">
       <div class="box-photo-frame">
-        <!-- GAMBAR BOX YANG CUSTOMER AKAN DAPAT -->
-        <img src="box.jpg" alt="SEREIN Night Reset Kit Packaging Received by Customer" />
+        <img src="box.jpg" alt="SEREIN Night Reset Box with Scrub, Oil, Mist, Wooden Spoon, and Ritual Card" />
       </div>
 
       <div class="box-details">
-        <span class="badge">What You Receive</span>
-        <h2>Inside Your SEREIN Box</h2>
+        <div class="pill-tag">Complete Box Contents</div>
+        <h2>Everything Inside Your SEREIN Box</h2>
         <p>
-          Every order arrives neatly arranged in our calming keepsake box—designed to look serene on your desk or nightstand.
+          Each box is thoughtfully assembled so you have every item needed for a neat, hygienic, and relaxing evening wind-down.
         </p>
 
         <ul class="checklist">
@@ -919,195 +1222,243 @@
             <div class="check-dot">1</div>
             <div>
               <strong>Moonlight Whipped Sugar Scrub</strong>
-              <span>Whipped body scrub jar paired with a wooden scoop.</span>
+              <span>Soft whipped scrub jar for gentle body exfoliation.</span>
             </div>
           </li>
           <li>
             <div class="check-dot">2</div>
             <div>
-              <strong>Slumber Soothing Body Oil (50ml)</strong>
-              <span>Amber dropper bottle for easy, measured application.</span>
+              <strong>Wooden Spoon Included</strong>
+              <span>Dedicated wooden spoon to scoop the scrub cleanly.</span>
             </div>
           </li>
           <li>
             <div class="check-dot">3</div>
             <div>
-              <strong>Dreamscape Pillow &amp; Pajama Mist</strong>
-              <span>Fine-mist spray bottle for linens and sleepwear.</span>
+              <strong>Slumber Soothing Body Oil (50ml)</strong>
+              <span>Calming botanical oil for post-wash nourishment.</span>
             </div>
           </li>
           <li>
             <div class="check-dot">4</div>
             <div>
-              <strong>4-7-8 Night Ritual Card</strong>
-              <span>Step-by-step guided card included inside the box.</span>
+              <strong>Dreamscape Mist + Ritual Card</strong>
+              <span>Pillow &amp; pajama mist plus the 4-7-8 breathing card.</span>
             </div>
           </li>
         </ul>
 
         <div class="price-box">
           <div class="price-tag">
-            RM35
-            <small>Complete Box Set</small>
+            RM35 <span style="font-size: 1.15rem; font-weight: 500; color: var(--muted-text);">• 3 Sets RM100</span>
+            <small>Full Box + Wooden Spoon + Card</small>
           </div>
-          <a href="#order" class="btn-primary">Pre-Order Now</a>
+          <a href="#order" class="btn-primary">Order Now</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why SEREIN Is Unique + 4-7-8 Ritual -->
-  <section id="why-serein">
+  <!-- Objectives, Uniqueness & 4-7-8 Ritual -->
+  <section id="objectives">
     <div class="container">
       <div class="section-header">
-        <span>What Sets Us Apart</span>
-        <h2>Why SEREIN Is Unique</h2>
-        <p>More than just body care—SEREIN combines sensory routine with a calm wind-down habit.</p>
+        <span class="eyebrow">Vision &amp; Purpose</span>
+        <h2>Product Objectives &amp; Why SEREIN Is Unique</h2>
+        <p>Built around calming evening habits, comfortable textures, and mindful rest.</p>
+      </div>
+
+      <div class="objectives-grid">
+        <div class="objective-card">
+          <div class="obj-num">01</div>
+          <div>
+            <h3>Create a Calm Wind-Down Habit</h3>
+            <p>Help customers shift out of busy, stressful routines into a peaceful evening mindset.</p>
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="obj-num">02</div>
+          <div>
+            <h3>Keep Textures Light &amp; Comfortable</h3>
+            <p>Deliver soft skin care and soothing aromas suited for warm, humid nights without heavy residue.</p>
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="obj-num">03</div>
+          <div>
+            <h3>Pair Body Care With Mindful Breathing</h3>
+            <p>Include a 4-7-8 Night Ritual Card inside every box to encourage slow, restorative breathing before sleep.</p>
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="obj-num">04</div>
+          <div>
+            <h3>Provide a Complete, Thoughtful Kit</h3>
+            <p>Combine scrub, wooden spoon, body oil, mist, and ritual card in one cohesive set.</p>
+          </div>
+        </div>
       </div>
 
       <div class="unique-grid">
         <div class="unique-card">
-          <h3>Cohesive 3-Step Flow</h3>
-          <p>
-            Instead of buying random products separately, each step flows naturally into the next—from gentle scrub to nourishing oil and linen mist.
-          </p>
+          <h3>Purpose-Built Pairing</h3>
+          <p>Every item complements the next—scrub to smooth, oil to nourish, and mist to calm your sleep space.</p>
         </div>
-
         <div class="unique-card">
-          <h3>Comfort Over Heaviness</h3>
-          <p>
-            Crafted to feel light and breathable so your skin feels cared for without heavy stickiness during warm nights.
-          </p>
+          <h3>Hygienic Wooden Spoon</h3>
+          <p>Comes with a wooden spoon so scooping your whipped sugar scrub stays neat and convenient.</p>
         </div>
-
         <div class="unique-card">
-          <h3>Ritual Card Included</h3>
-          <p>
-            Every box includes a 4-7-8 breathing ritual card to help turn a simple skincare step into a calming nightly pause.
-          </p>
+          <h3>Guided 4-7-8 Ritual Card</h3>
+          <p>Turns a simple night routine into a structured pause for body and mind.</p>
         </div>
       </div>
 
       <div class="ritual-box">
         <h3>The 4-7-8 Night Breathing Ritual</h3>
         <p class="ritual-sub">
-          Use the card inside your box once your evening routine is complete to slow your breathing before sleep.
+          Included on the ritual card inside every box—practice after your evening routine to wind down before sleep.
         </p>
 
         <div class="ritual-cards">
           <div class="ritual-step">
             <div class="ritual-num">4s</div>
-            <h4>Breathe In</h4>
-            <p>Inhale gently through your nose for 4 seconds.</p>
+            <h4>Inhale Calmly</h4>
+            <p>Breathe in gently through your nose for 4 seconds.</p>
           </div>
           <div class="ritual-step">
             <div class="ritual-num">7s</div>
-            <h4>Hold Softly</h4>
-            <p>Hold your breath calmly for 7 seconds.</p>
+            <h4>Hold Gently</h4>
+            <p>Hold your breath softly for 7 seconds to let tension settle.</p>
           </div>
           <div class="ritual-step">
             <div class="ritual-num">8s</div>
-            <h4>Breathe Out</h4>
-            <p>Exhale slowly for 8 seconds to release tension.</p>
+            <h4>Exhale Slowly</h4>
+            <p>Release your breath slowly for 8 seconds into restful calm.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Meet The Team -->
+  <!-- Meet The Team (4 Senior Roles) -->
   <section id="team" class="team-section">
     <div class="container">
       <div class="section-header">
-        <span>The People Behind SEREIN</span>
+        <span class="eyebrow">Executive Leadership</span>
         <h2>Meet The Team</h2>
-        <p>Replace the placeholder names and roles below with your actual SEREIN team members.</p>
+        <p>Led by four core leaders driving SEREIN across vision, product quality, operations, and brand growth.</p>
       </div>
 
       <div class="team-grid">
         <div class="team-card">
-          <div class="avatar-circle">A</div>
-          <h3>Ainaa Qistina</h3>
-          <span class="role-tag">Brand &amp; Creative Lead</span>
-          <p>Shapes the calm visual direction, digital presence, and brand storytelling.</p>
+          <div class="avatar-circle">Q</div>
+          <h3>Ainaa Qisitna</h3>
+          <span class="jawatan-badge">Chief Executive Officer (CEO)</span>
+          <p>Leads overall brand direction, creative identity, and strategic vision for SEREIN.</p>
         </div>
 
         <div class="team-card">
-          <div class="avatar-circle">M2</div>
+          <div class="avatar-circle">M</div>
           <h3>Maryam Khalisha</h3>
-          <span class="role-tag">Product &amp; Formulation</span>
-          <p>Focuses on texture balance, scent pairing, and kit quality.</p>
+          <span class="jawatan-badge">Chief Operating Officer (COO)</span>
+          <p>Oversees box assembly, wooden spoon &amp; kit inventory, and order fulfilment.</p>
         </div>
 
         <div class="team-card">
-          <div class="avatar-circle">M3</div>
+          <div class="avatar-circle">Z</div>
           <h3>Siti Nurzarifah</h3>
-          <span class="role-tag">Packaging &amp; Operations</span>
-          <p>Oversees box assembly, inventory, and smooth order fulfilment.</p>
+          <span class="jawatan-badge">Head of Product &amp; R&amp;D</span>
+          <p>Drives product formulation, scent balance, texture refinement, and quality checks.</p>
         </div>
 
         <div class="team-card">
-          <div class="avatar-circle">M4</div>
+          <div class="avatar-circle">A</div>
           <h3>Amyly Umairah</h3>
-          <span class="role-tag">Marketing &amp; Community</span>
-          <p>Manages promotional campaigns, customer inquiries, and launches.</p>
+          <span class="jawatan-badge">Chief Marketing Officer (CMO)</span>
+          <p>Spearheads promotional campaigns, visual storytelling, and customer outreach.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ + WhatsApp Pre-Order -->
+  <!-- FAQ + Live Total Pre-Order Form -->
   <section id="order">
     <div class="container two-col-section">
       <div>
-        <div class="section-header" style="text-align: left; margin-bottom: 1.75rem;">
-          <span>Quick Answers</span>
+        <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+          <span class="eyebrow">Helpful Info</span>
           <h2>Frequently Asked Questions</h2>
         </div>
 
         <div class="faq-item">
-          <h3>What is included in one RM35 box?</h3>
-          <p>Each box includes the Moonlight Whipped Sugar Scrub, Slumber Soothing Body Oil (50ml), Dreamscape Pillow &amp; Pajama Mist, and a 4-7-8 Night Ritual Card.</p>
+          <button type="button" class="faq-question">
+            Does the box include a spoon for the scrub?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Yes! Every Night Reset Kit includes a wooden spoon to scoop the Moonlight Whipped Sugar Scrub cleanly.
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3>Can I use the products only at night?</h3>
-          <p>They are designed around an evening wind-down routine, though you can also use the mist or oil whenever you want a moment of calm.</p>
+          <button type="button" class="faq-question">
+            How much is the 3-set promotion?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            1 set is RM35, while buying 3 sets together is only RM100 (saving RM5 compared to RM105).
+          </div>
         </div>
 
         <div class="faq-item">
-          <h3>How do I place an order?</h3>
-          <p>Fill out the form beside this section to generate a pre-order message directly to SEREIN on WhatsApp.</p>
+          <button type="button" class="faq-question">
+            How do I place my pre-order?
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Fill in your name, choose your quantity on the right, and click the button to send your order summary directly via WhatsApp.
+          </div>
         </div>
       </div>
 
       <div class="order-card">
         <h3>Pre-Order The Night Reset Kit</h3>
-        <p>Complete your details below to send your order via WhatsApp.</p>
+        <p>Select your quantity below and send your pre-order straight to WhatsApp.</p>
 
         <form id="whatsappForm">
           <div class="form-group">
             <label for="custName">Your Name</label>
-            <input type="text" id="custName" placeholder="Enter your name" required />
+            <input type="text" id="custName" placeholder="e.g. Aina" required />
           </div>
 
           <div class="form-group">
-            <label for="qty">Quantity (RM35 per box)</label>
+            <label for="qty">Select Quantity (1 Set RM35 • 3 Sets RM100)</label>
             <select id="qty">
-              <option value="1">1 Box — RM35</option>
-              <option value="2">2 Boxes — RM70</option>
-              <option value="3">3 Boxes — RM100</option>
-              <option value="4">4 Boxes — RM120</option>
+              <option value="1">1 Set — RM35</option>
+              <option value="2">2 Sets — RM70</option>
+              <option value="3">3 Sets — RM100 (Promo Save RM5!)</option>
+              <option value="4">4 Sets — RM135 (3 Sets RM100 + 1 Set RM35)</option>
+              <option value="5">5 Sets — RM170</option>
+              <option value="6">6 Sets — RM200 (2x 3-Set Promo)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="notes">Delivery / Pickup / Gift Notes (Optional)</label>
-            <textarea id="notes" rows="3" placeholder="Add pickup/delivery preference or a short note..."></textarea>
+            <label for="notes">Delivery / Pickup / Gift Note (Optional)</label>
+            <textarea id="notes" rows="3" placeholder="Write delivery/pickup details or a gift note..."></textarea>
+          </div>
+
+          <div class="total-summary">
+            <span>Total Price:</span>
+            <strong id="liveTotal">RM35</strong>
           </div>
 
           <button type="submit" class="btn-primary" style="width: 100%; text-align: center;">
-            Send Order via WhatsApp
+            Send Pre-Order via WhatsApp
           </button>
         </form>
       </div>
@@ -1117,32 +1468,95 @@
   <!-- Footer -->
   <footer>
     <a href="#" class="brand-logo">SEREIN</a>
-    <p>Calm Evening Body Care • The Night Reset Kit</p>
+    <p>The Night Reset Kit • Calm Evening Body Care &amp; Mindful Rest</p>
     <p><a href="https://aainqist-lab.github.io/Serein-website/" target="_blank" rel="noopener">aainqist-lab.github.io/Serein-website</a></p>
     <p style="opacity: 0.65;">&copy; 2026 SEREIN. All rights reserved.</p>
   </footer>
 
   <script>
-    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+    // Interactive Step Filter Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selected = btn.getAttribute('data-step');
+        productCards.forEach((card) => {
+          card.classList.remove('highlight-card');
+          if (selected === 'all') {
+            card.style.display = 'flex';
+          } else if (card.getAttribute('data-product') === selected) {
+            card.style.display = 'flex';
+            card.classList.add('highlight-card');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Simple FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isOpen = answer.style.display === 'block';
+        answer.style.display = isOpen ? 'none' : 'block';
+        button.querySelector('span').textContent = isOpen ? '+' : '−';
+      });
+    });
+
+    // Promo bundle price helper: every 3 sets = RM100, remaining sets = RM35 each
+    function calculateTotal(qty) {
+      const promoGroups = Math.floor(qty / 3);
+      const remainder = qty % 3;
+      return promoGroups * 100 + remainder * 35;
+    }
+
+    const qtySelect = document.getElementById('qty');
+    const liveTotal = document.getElementById('liveTotal');
+
+    function updateTotal() {
+      const qty = parseInt(qtySelect.value, 10) || 1;
+      liveTotal.textContent = `RM${calculateTotal(qty)}`;
+    }
+
+    // Allow clicking promo links to jump straight to pre-order with quantity selected
+    document.querySelectorAll('[data-select-qty]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const chosenQty = link.getAttribute('data-select-qty');
+        qtySelect.value = chosenQty;
+        updateTotal();
+      });
+    });
+
+    qtySelect.addEventListener('change', updateTotal);
+    updateTotal();
+
+    // WhatsApp Pre-Order Submission
+    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
       // Gantikan nombor di bawah dengan nombor WhatsApp rasmi anda (format: 601XXXXXXXX)
       const phoneNumber = '60183085815';
 
       const name = document.getElementById('custName').value.trim();
-      const qty = document.getElementById('qty').value;
-      const total = qty * 35;
+      const qty = parseInt(qtySelect.value, 10) || 1;
+      const total = calculateTotal(qty);
       const notes = document.getElementById('notes').value.trim();
 
-      let text = `Hi SEREIN! I would like to pre-order *The Night Reset Kit*:\n\n`;
-      text += `• Name: ${name}\n`;
-      text += `• Quantity: ${qty} Box(es)\n`;
-      text += `• Total: RM${total}\n`;
+      let message = `Hi SEREIN! I would like to pre-order *The Night Reset Kit*:\n\n`;
+      message += `• Name: ${name}\n`;
+      message += `• Quantity: ${qty} Set(s)\n`;
+      message += `• Includes: Scrub + Wooden Spoon + Body Oil + Pillow Mist + 4-7-8 Ritual Card\n`;
+      message += `• Total: RM${total}\n`;
       if (notes) {
-        text += `• Notes: ${notes}\n`;
+        message += `• Notes: ${notes}\n`;
       }
 
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
     });
   </script>
 
